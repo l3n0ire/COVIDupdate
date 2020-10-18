@@ -52,8 +52,10 @@ class App extends React.Component{
       this.setState({[prop]: e.target.value})
   }
   cityToHR(city){
-      
-      return healthRegions[city]
+      if(city in healthRegions)
+        return healthRegions[city]
+      else
+        return city
   }
   search = (prop)=>{
     this.setState({["isLoaded_"+prop]:false})
@@ -73,13 +75,14 @@ class App extends React.Component{
         <h1>City</h1>
         <input type="text" value={this.state.city} onChange ={(e)=>this.updateState("healthRegion",e)}></input>
         <button onClick={(e)=>this.search("healthRegion")}>Search</button>
-        <Summary data={this.state.healthRegionData} loaded={this.state.isLoaded_healthRegion}></Summary>
+    <Summary data={this.state.healthRegionData} loaded={this.state.isLoaded_healthRegion} section="healthRegion"></Summary>
         <h1>Province</h1>
-        <input type="text" value={this.state.province} onChange ={(e)=>this.updateState("province",e)}></input>
+        <input type="text" value={this.state.province} onChange ={(e)=>this.updateState("province",e) }></input>
         <button onClick={(e)=>this.search("province")}>Search</button>
-        <Summary data={this.state.provinceData} loaded={this.state.isLoaded_province}></Summary>
+        <Summary data={this.state.provinceData} loaded={this.state.isLoaded_province} section="province"></Summary>
         <h1>Canada</h1>
-        <Summary data={this.state.countryData} loaded={this.state.isLoaded_country}></Summary>
+        <Summary data={this.state.countryData} loaded={this.state.isLoaded_country} section="country"></Summary>
+        <p>Data as of {this.state.date}</p>
       </div>
     );
   }

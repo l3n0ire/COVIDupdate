@@ -8,8 +8,18 @@ class Summary extends React.Component{
         return x
     }
     render(){
+        let HRSection
+        let provinceSection
+        if(this.props.section === "healthRegion"){
+            HRSection =  <p> <b>Health Region:</b> {this.props.data.health_region}</p>
+            provinceSection = <p> <b>Province:</b> {this.props.data.province}</p>
+        }
+        else if(this.props.section === "province")
+            provinceSection = <p> <b>Province:</b> {this.props.data.province}</p>
         return(
             <div>
+                {HRSection}
+                {provinceSection}
                 <table>
                     <tbody>
                         <tr>

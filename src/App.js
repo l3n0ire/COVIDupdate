@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './css/main.css'
 import Summary from './components/summary'
 import{healthRegions} from './data/healthRegions'
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
@@ -73,12 +74,16 @@ class App extends React.Component{
     return(
       <div>
         <h1>City</h1>
-        <input type="text" value={this.state.city} onChange ={(e)=>this.updateState("healthRegion",e)}></input>
-        <button onClick={(e)=>this.search("healthRegion")}>Search</button>
+        <div className="searchGroup">
+          <input type="text" value={this.state.city} onChange ={(e)=>this.updateState("healthRegion",e)}></input>
+          <button onClick={(e)=>this.search("healthRegion")}>Search</button>
+        </div>
     <Summary data={this.state.healthRegionData} loaded={this.state.isLoaded_healthRegion} section="healthRegion"></Summary>
         <h1>Province</h1>
-        <input type="text" value={this.state.province} onChange ={(e)=>this.updateState("province",e) }></input>
-        <button onClick={(e)=>this.search("province")}>Search</button>
+        <div className="searchGroup">
+          <input type="text" value={this.state.province} onChange ={(e)=>this.updateState("province",e) }></input>
+          <button onClick={(e)=>this.search("province")}>Search</button>
+        </div>
         <Summary data={this.state.provinceData} loaded={this.state.isLoaded_province} section="province"></Summary>
         <h1>Canada</h1>
         <Summary data={this.state.countryData} loaded={this.state.isLoaded_country} section="country"></Summary>

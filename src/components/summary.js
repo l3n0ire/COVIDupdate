@@ -16,8 +16,18 @@ class Summary extends React.Component{
         }
         else if(this.props.section === "province")
             provinceSection = <p> <b>Province:</b> {this.props.data.province}</p>
+        function arrow(value){
+            if(value===0)
+                return value
+            else if (value == null)
+                return "N/A"
+            else if (value>0)
+                return "(↑ "+value+")"
+            else
+                return ("(↓ "+value+")").replace('-','')
+        }
         return(
-            <div>
+            <div className="summary">
                 {HRSection}
                 {provinceSection}
                 <table>
@@ -26,22 +36,22 @@ class Summary extends React.Component{
                             <td>
                                 {this.props.loaded? this.numWithCommas(this.props.data.cumulative_cases):"Loading..." }
                                 <br/>
-                                {this.props.loaded? this.numWithCommas(this.props.data.cases):"Loading..." }
+                                {this.props.loaded? this.numWithCommas(arrow(this.props.data.cases)):"Loading..." }
                             </td>
                             <td>
                                 {this.props.loaded? this.numWithCommas(this.props.data.cumulative_deaths):"Loading..." }
                                 <br/>
-                                {this.props.loaded? this.numWithCommas(this.props.data.deaths):"Loading..." }
+                                {this.props.loaded? this.numWithCommas(arrow(this.props.data.deaths)):"Loading..." }
                             </td>
                             <td>
                                 {this.props.loaded? this.numWithCommas(this.props.data.cumulative_recovered):"Loading..." }
                                 <br/>
-                                {this.props.loaded? this.numWithCommas(this.props.data.recovered):"Loading..." }
+                                {this.props.loaded? this.numWithCommas(arrow(this.props.data.recovered)):"Loading..." }
                             </td>
                             <td>
                                 {this.props.loaded? this.numWithCommas(this.props.data.active_cases):"Loading..." }
                                 <br/>
-                                {this.props.loaded? this.numWithCommas(this.props.data.active_cases_change):"Loading..." }
+                                {this.props.loaded? this.numWithCommas(arrow(this.props.data.active_cases_change)):"Loading..." }
                             </td>
                         </tr>
                     </tbody>

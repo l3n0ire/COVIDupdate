@@ -1,0 +1,25 @@
+body{
+    text-align:center;
+    background-color: #333;
+    color:#fff;
+}
+.summary table{
+    width:100%;
+}
+
+.summary{
+    text-align: left;
+    margin: 0 auto;
+    width:90vw;
+}
+@media only screen and (min-width: 321px) {
+    .summary{
+        width:80vw;
+    }
+}
+
+@media only screen and (min-width: 679px) {
+    .summary{
+        width:50vw;
+    }
+}

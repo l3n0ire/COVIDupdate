@@ -58,6 +58,11 @@ class App extends React.Component{
       else
         return city
   }
+  searchEnter = (prop,e) =>{
+    if(e.key === 'Enter'){
+      this.search(prop)
+    }
+  }
   search = (prop)=>{
     this.setState({["isLoaded_"+prop]:false})
     fetch(`${proxyurl}https://api.opencovid.ca/summary?loc=${this.state[prop]}&date=${this.state.date}`)
@@ -75,13 +80,13 @@ class App extends React.Component{
       <div>
         <h1>City</h1>
         <div className="searchGroup">
-          <input type="text" value={this.state.city} onChange ={(e)=>this.updateState("healthRegion",e)}></input>
+          <input type="text" value={this.state.city} onChange ={(e)=>this.updateState("healthRegion",e)} onKeyDown={(e)=>this.searchEnter("healthRegion",e)}></input>
           <button onClick={(e)=>this.search("healthRegion")}>Search</button>
         </div>
     <Summary data={this.state.healthRegionData} loaded={this.state.isLoaded_healthRegion} section="healthRegion"></Summary>
         <h1>Province</h1>
         <div className="searchGroup">
-          <input type="text" value={this.state.province} onChange ={(e)=>this.updateState("province",e) }></input>
+          <input type="text" value={this.state.province} onChange ={(e)=>this.updateState("province",e)} onKeyDown={(e)=>this.searchEnter("province",e)}></input>
           <button onClick={(e)=>this.search("province")}>Search</button>
         </div>
         <Summary data={this.state.provinceData} loaded={this.state.isLoaded_province} section="province"></Summary>

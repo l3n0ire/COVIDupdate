@@ -35,22 +35,28 @@ class Summary extends React.Component{
                         <tr>
                             <td>
                                 {this.props.loaded? this.numWithCommas(this.props.data.cumulative_cases):"Loading..." }
-                                <br/>
-                                {this.props.loaded? this.numWithCommas(arrow(this.props.data.cases)):"Loading..." }
                             </td>
                             <td>
                                 {this.props.loaded? this.numWithCommas(this.props.data.cumulative_deaths):"Loading..." }
-                                <br/>
-                                {this.props.loaded? this.numWithCommas(arrow(this.props.data.deaths)):"Loading..." }
                             </td>
                             <td>
                                 {this.props.loaded? this.numWithCommas(this.props.data.cumulative_recovered):"Loading..." }
-                                <br/>
-                                {this.props.loaded? this.numWithCommas(arrow(this.props.data.recovered)):"Loading..." }
                             </td>
                             <td>
                                 {this.props.loaded? this.numWithCommas(this.props.data.active_cases):"Loading..." }
-                                <br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {this.props.loaded? this.numWithCommas(arrow(this.props.data.cases)):"Loading..." }
+                            </td>
+                            <td>
+                                {this.props.loaded? this.numWithCommas(arrow(this.props.data.deaths)):"Loading..." }
+                            </td>
+                            <td>
+                                {this.props.loaded? this.numWithCommas(arrow(this.props.data.recovered)):"Loading..." }
+                            </td>
+                            <td>
                                 {this.props.loaded? this.numWithCommas(arrow(this.props.data.active_cases_change)):"Loading..." }
                             </td>
                         </tr>

@@ -12,6 +12,9 @@ body{
     margin: 0 auto;
     width:90vw;
 }
+.summary td{
+    padding-top:0.1em;
+}
 @media only screen and (min-width: 321px) {
     .summary{
         width:80vw;
